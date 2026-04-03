@@ -11,36 +11,78 @@ const vibes = [
   { name: 'Documentary', desc: 'Observational, journalistic', sample: { headline: 'Tuesday, 6:47 AM', body: 'The fish market opens before the city wakes. Three generations, same corner, same hands.' } },
 ];
 
-const sampleCarousels = [
+const showcaseExamples = [
   {
-    title: 'Wedding Photography',
+    photographer: 'Wedding Photographer',
+    template: 'Cinematic Overlay',
     vibe: 'Romantic',
+    brand: { name: 'Sarah Lane Photo', tagline: 'LOVE, LIGHT, LEGACY' },
+    colors: { bg: '#1a1520', primary: '#f5efe8', accent: '#d4a574' },
     slides: [
-      { headline: 'A Love Story in Light', body: 'Sarah & James, October 2025' },
-      { headline: 'The First Look', body: 'Some moments don\'t need words. They just need someone watching.' },
-      { headline: 'Book Your Date', body: 'Limited 2026 availability. Link in bio.' },
+      { headline: 'A Love Story\nTold in Light', body: 'Sarah & James — October, Sonoma', hasPhoto: true },
+      { headline: 'The First Look', body: 'Some moments don\'t need words. They just need someone watching.', hasPhoto: true },
+      { headline: 'Now Booking\n2026 Weddings', body: '12 dates remaining. Inquire via link in bio.', hasPhoto: false },
     ],
-    colors: { bg: '#1a1520', accent: '#d4a574', text: '#f5efe8' },
   },
   {
-    title: 'Food & Restaurant',
+    photographer: 'Portrait Photographer',
+    template: 'Editorial Elegant',
     vibe: 'Editorial',
+    brand: { name: 'Mira Studios', tagline: 'MIRA STUDIOS' },
+    colors: { bg: '#f7f4ef', primary: '#2a2520', accent: '#8b6914' },
     slides: [
-      { headline: 'Farm to Frame', body: 'Behind the scenes at Aster Kitchen' },
-      { headline: 'Every Plate, a Canvas', body: 'Chef Mira\'s autumn tasting menu, shot on location.' },
-      { headline: 'Reservations Open', body: 'Thursday through Sunday. Reserve at asterkitchen.com' },
+      { headline: 'The Confidence\nSession', body: 'A portrait experience designed to make you feel powerful.', hasPhoto: true },
+      { headline: 'Your Story.\nYour Frame.', body: 'Styled. Directed. Effortless. 90 minutes of you at your best.', hasPhoto: true },
+      { headline: 'Mini Sessions\nNow Open', body: 'Spring dates are live. 30 minutes, 15 edited images, $350.', hasPhoto: false },
     ],
-    colors: { bg: '#faf6f1', accent: '#8b6914', text: '#2d2a25' },
   },
   {
-    title: 'Real Estate',
+    photographer: 'Real Estate Photographer',
+    template: 'Minimal Centered',
     vibe: 'Minimal',
+    brand: { name: 'Apex Visuals', tagline: 'APEX VISUALS' },
+    colors: { bg: '#ffffff', primary: '#1a1a1a', accent: '#4a5940' },
     slides: [
-      { headline: '4BR | 3BA | 2,400 sqft', body: 'Modern farmhouse in West Austin' },
-      { headline: 'Light-Filled Living', body: '12-foot ceilings. Floor-to-ceiling windows. Southern exposure.' },
-      { headline: 'Schedule a Tour', body: 'Open house Saturday 1-4pm. DM for details.' },
+      { headline: '4BR | 3BA\n2,400 sqft', body: 'Modern farmhouse in West Austin — just listed.', hasPhoto: true },
+      { headline: 'Light-Filled\nLiving', body: '12-foot ceilings. Floor-to-ceiling windows. Southern exposure all day.', hasPhoto: true },
+      { headline: 'Schedule\na Tour', body: 'Open house Saturday 1-4pm. DM for private showing.', hasPhoto: false },
     ],
-    colors: { bg: '#ffffff', accent: '#2d2d2d', text: '#1a1a1a' },
+  },
+  {
+    photographer: 'Food Photographer',
+    template: 'Split Story',
+    vibe: 'Authentic',
+    brand: { name: 'Savory & Co.', tagline: 'SAVORY & CO.' },
+    colors: { bg: '#2c2418', primary: '#f0e8d8', accent: '#c17c3e' },
+    slides: [
+      { headline: 'Farm to\nFrame', body: 'Behind the scenes at Aster Kitchen with Chef Mira.', hasPhoto: true },
+      { headline: 'Every Plate,\na Canvas', body: 'The autumn tasting menu, shot on location between courses.', hasPhoto: true },
+      { headline: 'Book Your\nShoot', body: 'Restaurant + menu photography packages starting at $800.', hasPhoto: false },
+    ],
+  },
+  {
+    photographer: 'Event Photographer',
+    template: 'Bold Showcase',
+    vibe: 'Bold',
+    brand: { name: 'Flash Collective', tagline: 'FLASH COLLECTIVE' },
+    colors: { bg: '#0a0a0a', primary: '#ffffff', accent: '#ff4d2e' },
+    slides: [
+      { headline: 'SXSW\n2026', body: '72 hours. 14 stages. 4,000 frames.', hasPhoto: true },
+      { headline: 'THE ENERGY\nWAS UNREAL', body: 'When the lights hit and the crowd surged, we were already shooting.', hasPhoto: true },
+      { headline: 'HIRE US FOR\nYOUR EVENT', body: 'Concerts. Conferences. Launch parties. Corporate. We shoot it all.', hasPhoto: false },
+    ],
+  },
+  {
+    photographer: 'Travel Photographer',
+    template: 'Cinematic Overlay',
+    vibe: 'Documentary',
+    brand: { name: 'Atlas Journal', tagline: 'ATLAS JOURNAL' },
+    colors: { bg: '#1c2a1c', primary: '#e8e4d8', accent: '#a8b896' },
+    slides: [
+      { headline: 'Kyoto,\n5:47 AM', body: 'The temple opens before the city wakes. Just the monks and the mist.', hasPhoto: true },
+      { headline: 'Three\nGenerations', body: 'Same corner. Same hands. The fish market hasn\'t changed in forty years.', hasPhoto: true },
+      { headline: 'Print Shop\nNow Live', body: 'Limited edition Japan series. 12 images. Signed and numbered.', hasPhoto: false },
+    ],
   },
 ];
 
@@ -388,9 +430,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ───── Sample Carousels ───── */}
+      {/* ───── Carousel Showcase ───── */}
       <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Samples</p>
             <h2
@@ -399,71 +441,169 @@ export default function HomePage() {
             >
               See what you&apos;ll create
             </h2>
-            <p className="text-lg text-muted">
-              Real carousel examples across different industries and vibes.
+            <p className="text-lg text-muted max-w-2xl mx-auto">
+              Real carousel examples for different types of photographers. Every slide below was generated by Gridshot.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {sampleCarousels.map((carousel) => (
-              <div key={carousel.title} className="space-y-4">
-                {/* Industry label */}
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
-                    {carousel.title}
-                  </span>
-                  <span className="text-xs text-muted px-2 py-0.5 rounded-sm border border-border">
-                    {carousel.vibe} vibe
-                  </span>
+          <div className="space-y-16">
+            {showcaseExamples.map((example, exIdx) => (
+              <div key={example.photographer} className="space-y-5">
+                {/* Header row */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-1">
+                  <div className="flex items-center gap-3">
+                    <span className="text-base font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                      {example.photographer}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-widest text-accent-warm font-medium">
+                      {example.brand.name}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted px-2.5 py-1 rounded-sm border border-border bg-card">
+                      {example.template}
+                    </span>
+                    <span className="text-xs text-accent-warm px-2.5 py-1 rounded-sm border border-accent-warm/20 bg-accent-warm/5">
+                      {example.vibe} vibe
+                    </span>
+                  </div>
                 </div>
 
-                {/* Mini carousel preview */}
-                <div className="relative rounded-sm border border-border overflow-hidden">
-                  {carousel.slides.map((slide, i) => (
+                {/* Carousel slides */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {example.slides.map((slide, i) => (
                     <div
                       key={i}
-                      className="p-6 border-b border-border/50 last:border-0"
-                      style={{ background: carousel.colors.bg }}
+                      className="relative rounded-sm overflow-hidden border border-border/50"
+                      style={{ aspectRatio: '1 / 1' }}
                     >
-                      <div className="flex items-start gap-3">
-                        <span
-                          className="text-[10px] font-bold shrink-0 mt-0.5 opacity-40"
-                          style={{ color: carousel.colors.text }}
-                        >
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <div>
-                          <p
-                            className="text-sm font-bold leading-snug mb-1"
-                            style={{ color: carousel.colors.accent, fontFamily: 'var(--font-heading)' }}
+                      {/* Background */}
+                      <div className="absolute inset-0" style={{ backgroundColor: example.colors.bg }} />
+
+                      {/* Photo placeholder area */}
+                      {slide.hasPhoto && (
+                        <div className="absolute inset-0 overflow-hidden">
+                          {/* Simulated photo with gradient texture */}
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              background: exIdx % 2 === 0
+                                ? `linear-gradient(135deg, ${example.colors.bg} 0%, ${example.colors.accent}22 40%, ${example.colors.bg} 100%)`
+                                : `linear-gradient(225deg, ${example.colors.bg} 0%, ${example.colors.accent}22 50%, ${example.colors.bg} 100%)`,
+                            }}
+                          />
+                          {/* Simulated image area */}
+                          <div
+                            className="absolute inset-4 rounded-sm"
+                            style={{
+                              background: `linear-gradient(${120 + i * 40}deg, ${example.colors.accent}15 0%, ${example.colors.accent}08 50%, ${example.colors.accent}20 100%)`,
+                              border: `1px solid ${example.colors.accent}15`,
+                            }}
+                          />
+                          {/* Camera icon to indicate photo placement */}
+                          <div className="absolute inset-0 flex items-center justify-center opacity-[0.07]">
+                            <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke={example.colors.primary} strokeWidth={0.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Text overlay — matches template style */}
+                      <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 z-10">
+                        {/* Gradient scrim for readability */}
+                        {slide.hasPhoto && (
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              background: `linear-gradient(to top, ${example.colors.bg} 0%, ${example.colors.bg}dd 35%, transparent 70%)`,
+                            }}
+                          />
+                        )}
+                        <div className="relative z-10">
+                          {/* Brand tag on first slide */}
+                          {i === 0 && (
+                            <span
+                              className="text-[9px] tracking-[0.2em] uppercase mb-3 block opacity-50"
+                              style={{ color: example.colors.primary, fontFamily: 'var(--font-body)' }}
+                            >
+                              {example.brand.tagline}
+                            </span>
+                          )}
+
+                          <h3
+                            className="text-lg sm:text-xl font-bold leading-tight mb-2 whitespace-pre-line"
+                            style={{
+                              color: example.colors.accent,
+                              fontFamily: 'var(--font-heading)',
+                            }}
                           >
                             {slide.headline}
-                          </p>
-                          <p className="text-xs leading-relaxed opacity-70" style={{ color: carousel.colors.text }}>
+                          </h3>
+                          <p
+                            className="text-xs sm:text-sm leading-relaxed opacity-70"
+                            style={{ color: example.colors.primary, fontFamily: 'var(--font-body)' }}
+                          >
                             {slide.body}
                           </p>
+
+                          {/* Swipe indicator on non-last slides */}
+                          {i < example.slides.length - 1 && (
+                            <div className="mt-3 flex items-center gap-1.5 opacity-40">
+                              <div className="flex gap-1">
+                                {example.slides.map((_, di) => (
+                                  <div
+                                    key={di}
+                                    className="w-1 h-1 rounded-full"
+                                    style={{ backgroundColor: di === i ? example.colors.accent : example.colors.primary, opacity: di === i ? 1 : 0.3 }}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* CTA on last slide */}
+                          {i === example.slides.length - 1 && (
+                            <div
+                              className="mt-3 inline-block px-3 py-1.5 rounded-sm text-[10px] font-bold uppercase tracking-widest"
+                              style={{
+                                backgroundColor: example.colors.accent,
+                                color: example.colors.bg,
+                              }}
+                            >
+                              Learn More
+                            </div>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
 
-                {/* Slide count indicator */}
-                <div className="flex items-center justify-center gap-1.5">
-                  {carousel.slides.map((_, i) => (
-                    <div
-                      key={i}
-                      className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-accent' : 'bg-border'}`}
-                    />
+                      {/* Slide number */}
+                      <div
+                        className="absolute top-3 right-3 text-[9px] font-bold opacity-30 z-10"
+                        style={{ color: example.colors.primary, fontFamily: 'var(--font-heading)' }}
+                      >
+                        {String(i + 1).padStart(2, '0')} / {String(example.slides.length).padStart(2, '0')}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-sm text-muted mt-10">
-            Every carousel above was generated from photos + a brand profile + a vibe selection. The AI wrote all the copy.
-          </p>
+          <div className="text-center mt-16">
+            <p className="text-sm text-muted mb-6">
+              Every example above was generated from a brand profile + vibe selection. The AI wrote all the copy.
+            </p>
+            <Link
+              href="/signup"
+              className="inline-flex items-center gap-2 rounded-sm bg-accent-warm px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-warm-hover"
+            >
+              Try it with your photos
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
         </div>
       </section>
 
