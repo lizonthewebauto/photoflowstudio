@@ -13,11 +13,12 @@ interface PresetWithBrand extends Preset {
     color_secondary: string;
     font_heading: string;
     font_body: string;
-  };
+  } | null;
 }
 
 export function PresetCard({ preset }: { preset: PresetWithBrand }) {
   const router = useRouter();
+  const brand = preset.brands;
   const templateName =
     TEMPLATE_REGISTRY[preset.template_slug as keyof typeof TEMPLATE_REGISTRY]?.name ??
     preset.template_slug;
@@ -33,7 +34,7 @@ export function PresetCard({ preset }: { preset: PresetWithBrand }) {
       <div className="flex items-start justify-between mb-3">
         <div>
           <h3 className="font-semibold text-foreground">{preset.name}</h3>
-          <p className="text-muted text-sm mt-1">{preset.brands.name}</p>
+          <p className="text-muted text-sm mt-1">{brand?.name ?? 'Unknown brand'}</p>
         </div>
         <div className="flex gap-2">
           <Link
@@ -68,24 +69,28 @@ export function PresetCard({ preset }: { preset: PresetWithBrand }) {
         )}
       </div>
 
-      <div className="flex gap-1.5 mt-3">
-        <div
-          className="w-8 h-8 rounded"
-          style={{ backgroundColor: preset.brands.color_primary }}
-          title="Primary"
-        />
-        <div
-          className="w-8 h-8 rounded"
-          style={{ backgroundColor: preset.brands.color_secondary }}
-          title="Secondary"
-        />
-      </div>
+      {brand && (
+        <>
+          <div className="flex gap-1.5 mt-3">
+            <div
+              className="w-8 h-8 rounded"
+              style={{ backgroundColor: brand.color_primary }}
+              title="Primary"
+            />
+            <div
+              className="w-8 h-8 rounded"
+              style={{ backgroundColor: brand.color_secondary }}
+              title="Secondary"
+            />
+          </div>
 
-      <div className="flex gap-2 mt-3 text-xs text-muted">
-        <span>{preset.brands.font_heading}</span>
-        <span>/</span>
-        <span>{preset.brands.font_body}</span>
-      </div>
+          <div className="flex gap-2 mt-3 text-xs text-muted">
+            <span>{brand.font_heading}</span>
+            <span>/</span>
+            <span>{brand.font_body}</span>
+          </div>
+        </>
+      )}
     </div>
   );
 }
