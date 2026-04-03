@@ -1,14 +1,74 @@
 import Link from 'next/link';
 
 const vibes = [
-  { name: 'Authentic', desc: 'Genuine, real, honest' },
-  { name: 'Cinematic', desc: 'Dramatic, visual, story-driven' },
-  { name: 'Editorial', desc: 'Sophisticated, magazine-style' },
-  { name: 'Bold', desc: 'Confident, daring, powerful' },
-  { name: 'Minimal', desc: 'Clean, sparse, refined' },
-  { name: 'Romantic', desc: 'Intimate, dreamy, sensual' },
-  { name: 'Emotional', desc: 'Heart-centered, vulnerable' },
-  { name: 'Documentary', desc: 'Observational, journalistic' },
+  { name: 'Authentic', desc: 'Genuine, real, honest', sample: { headline: 'The Real Moments Matter', body: 'No filters. No staging. Just the honest beauty of what actually happened that day.' } },
+  { name: 'Cinematic', desc: 'Dramatic, visual, story-driven', sample: { headline: 'Every Frame Tells a Story', body: 'Wide open spaces. Golden hour light. A scene that pulls you in and won\'t let go.' } },
+  { name: 'Editorial', desc: 'Sophisticated, magazine-style', sample: { headline: 'The Art of the Everyday', body: 'Clean lines meet quiet luxury. A visual essay in restraint and intention.' } },
+  { name: 'Bold', desc: 'Confident, daring, powerful', sample: { headline: 'MAKE THEM STOP SCROLLING', body: 'Your work speaks for itself. Time to let it scream.' } },
+  { name: 'Minimal', desc: 'Clean, sparse, refined', sample: { headline: 'Less. Always less.', body: 'White space is not empty space. It\'s breathing room for your best work.' } },
+  { name: 'Romantic', desc: 'Intimate, dreamy, sensual', sample: { headline: 'Soft Light, Warm Skin', body: 'The kind of photo that makes you feel something you can\'t quite name.' } },
+  { name: 'Emotional', desc: 'Heart-centered, vulnerable', sample: { headline: 'She Didn\'t Know I Was Watching', body: 'The laugh was so real it cracked the room open. I just pressed the shutter.' } },
+  { name: 'Documentary', desc: 'Observational, journalistic', sample: { headline: 'Tuesday, 6:47 AM', body: 'The fish market opens before the city wakes. Three generations, same corner, same hands.' } },
+];
+
+const sampleCarousels = [
+  {
+    title: 'Wedding Photography',
+    vibe: 'Romantic',
+    slides: [
+      { headline: 'A Love Story in Light', body: 'Sarah & James, October 2025' },
+      { headline: 'The First Look', body: 'Some moments don\'t need words. They just need someone watching.' },
+      { headline: 'Book Your Date', body: 'Limited 2026 availability. Link in bio.' },
+    ],
+    colors: { bg: '#1a1520', accent: '#d4a574', text: '#f5efe8' },
+  },
+  {
+    title: 'Food & Restaurant',
+    vibe: 'Editorial',
+    slides: [
+      { headline: 'Farm to Frame', body: 'Behind the scenes at Aster Kitchen' },
+      { headline: 'Every Plate, a Canvas', body: 'Chef Mira\'s autumn tasting menu, shot on location.' },
+      { headline: 'Reservations Open', body: 'Thursday through Sunday. Reserve at asterkitchen.com' },
+    ],
+    colors: { bg: '#faf6f1', accent: '#8b6914', text: '#2d2a25' },
+  },
+  {
+    title: 'Real Estate',
+    vibe: 'Minimal',
+    slides: [
+      { headline: '4BR | 3BA | 2,400 sqft', body: 'Modern farmhouse in West Austin' },
+      { headline: 'Light-Filled Living', body: '12-foot ceilings. Floor-to-ceiling windows. Southern exposure.' },
+      { headline: 'Schedule a Tour', body: 'Open house Saturday 1-4pm. DM for details.' },
+    ],
+    colors: { bg: '#ffffff', accent: '#2d2d2d', text: '#1a1a1a' },
+  },
+];
+
+const faqs = [
+  {
+    q: 'How does the AI write copy for my photos?',
+    a: 'When you upload photos and select a vibe, Gridshot analyzes your brand voice, your target audience, and the visual content of your images. It generates headlines, body text, and CTAs that match your brand personality. You can regenerate, edit, or rewrite any text on any slide.',
+  },
+  {
+    q: 'Can I use my own fonts and colors?',
+    a: 'Yes. You set up your brand with custom colors, heading font, body font, and voice description. Gridshot includes 12+ premium heading fonts and 10 body fonts. Every carousel you create automatically uses your brand settings.',
+  },
+  {
+    q: 'What platforms can I publish to?',
+    a: 'Instagram, Threads, X (Twitter), Facebook, TikTok, Bluesky, LinkedIn, and Pinterest. Connect your accounts once and publish to any or all of them directly from Gridshot.',
+  },
+  {
+    q: 'Can I export carousels as images instead of publishing?',
+    a: 'Yes. Export individual slides or the entire carousel as high-quality JPEGs. Download them and post manually, send to clients for approval, or use them anywhere you want.',
+  },
+  {
+    q: 'How many slides can a carousel have?',
+    a: 'Between 1 and 10 slides per carousel. Each slide gets its own photo, headline, body text, and optional footer. You control the layout and text styling per slide.',
+  },
+  {
+    q: 'Is there a free plan?',
+    a: 'Yes. Gridshot offers a free trial so you can try everything out. Just enter your card to get started.',
+  },
 ];
 
 const platforms = [
@@ -217,7 +277,7 @@ export default function HomePage() {
               <span aria-hidden="true">&rarr;</span>
             </Link>
             <span className="text-sm text-muted">
-              No credit card required
+              Start your free trial today
             </span>
           </div>
 
@@ -322,6 +382,158 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ───── Sample Carousels ───── */}
+      <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Samples</p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              See what you&apos;ll create
+            </h2>
+            <p className="text-lg text-muted">
+              Real carousel examples across different industries and vibes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {sampleCarousels.map((carousel) => (
+              <div key={carousel.title} className="space-y-4">
+                {/* Industry label */}
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {carousel.title}
+                  </span>
+                  <span className="text-xs text-muted px-2 py-0.5 rounded-sm border border-border">
+                    {carousel.vibe} vibe
+                  </span>
+                </div>
+
+                {/* Mini carousel preview */}
+                <div className="relative rounded-sm border border-border overflow-hidden">
+                  {carousel.slides.map((slide, i) => (
+                    <div
+                      key={i}
+                      className="p-6 border-b border-border/50 last:border-0"
+                      style={{ background: carousel.colors.bg }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <span
+                          className="text-[10px] font-bold shrink-0 mt-0.5 opacity-40"
+                          style={{ color: carousel.colors.text }}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <p
+                            className="text-sm font-bold leading-snug mb-1"
+                            style={{ color: carousel.colors.accent, fontFamily: 'var(--font-heading)' }}
+                          >
+                            {slide.headline}
+                          </p>
+                          <p className="text-xs leading-relaxed opacity-70" style={{ color: carousel.colors.text }}>
+                            {slide.body}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Slide count indicator */}
+                <div className="flex items-center justify-center gap-1.5">
+                  {carousel.slides.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-accent' : 'bg-border'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-muted mt-10">
+            Every carousel above was generated from photos + a brand profile + a vibe selection. The AI wrote all the copy.
+          </p>
+        </div>
+      </section>
+
+      {/* ───── Before / After ───── */}
+      <section className="relative z-10 px-6 py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">The Difference</p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              What changes when you use Gridshot
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Without */}
+            <div className="rounded-sm border border-border bg-card p-8">
+              <div className="flex items-center gap-2 mb-6">
+                <svg className="w-5 h-5 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                </svg>
+                <span className="text-sm font-bold uppercase tracking-widest text-muted" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Without Gridshot
+                </span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  'Open Canva, start from blank, drag photos in one by one',
+                  'Stare at a blinking cursor trying to write captions',
+                  'Manually match fonts, colors, spacing across slides',
+                  'Export, open Instagram, upload, write caption again',
+                  'Repeat for Threads, X, Facebook, LinkedIn...',
+                  'Total time: 45-90 minutes per carousel',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-muted">
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted shrink-0 mt-1.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* With */}
+            <div className="rounded-sm border-2 border-accent bg-card p-8 relative">
+              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent-warm" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-accent-warm" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-accent-warm" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent-warm" />
+              <div className="flex items-center gap-2 mb-6">
+                <Crosshair className="w-5 h-5 text-accent" />
+                <span className="text-sm font-bold uppercase tracking-widest text-accent" style={{ fontFamily: 'var(--font-heading)' }}>
+                  With Gridshot
+                </span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  'Upload photos, pick a vibe, hit generate',
+                  'AI writes headlines, body text, and CTAs instantly',
+                  'Brand colors, fonts, and voice applied automatically',
+                  'Tweak anything you want or publish as-is',
+                  'One click publishes to all 8 platforms at once',
+                  'Total time: 3-5 minutes per carousel',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <Check />
+                    <span className="mt-px">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ───── Features Grid ───── */}
       <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
         <div className="max-w-5xl mx-auto">
@@ -362,7 +574,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ───── Vibes ───── */}
+      {/* ───── Vibes with Sample Copy ───── */}
       <section className="relative z-10 px-6 py-20 sm:py-28">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -373,31 +585,50 @@ export default function HomePage() {
             >
               Pick a vibe. Set the tone.
             </h2>
-            <p className="text-lg text-muted">
+            <p className="text-lg text-muted max-w-2xl mx-auto">
               8 creative vibes that shape how the AI writes your copy.
+              Same photo, completely different feel.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {vibes.map((v) => (
               <div
                 key={v.name}
-                className="relative rounded-sm bg-card border border-border p-5 text-center transition-all hover:shadow-md hover:-translate-y-0.5 group"
+                className="relative rounded-sm bg-card border border-border transition-all hover:shadow-md hover:-translate-y-0.5 group overflow-hidden"
               >
-                {/* Mini crosshair */}
-                <div className="w-6 h-6 mx-auto mb-3 opacity-30 group-hover:opacity-60 transition-opacity">
-                  <Crosshair className="w-6 h-6 text-accent" />
+                {/* Header */}
+                <div className="p-4 pb-3 border-b border-border">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-5 h-5 opacity-30 group-hover:opacity-60 transition-opacity">
+                      <Crosshair className="w-5 h-5 text-accent" />
+                    </div>
+                    <h3
+                      className="text-sm font-bold"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      {v.name}
+                    </h3>
+                  </div>
+                  <p className="text-[11px] text-muted">{v.desc}</p>
                 </div>
-                <h3
-                  className="text-base font-bold mb-1"
-                  style={{ fontFamily: 'var(--font-heading)' }}
-                >
-                  {v.name}
-                </h3>
-                <p className="text-xs text-muted">{v.desc}</p>
+
+                {/* Sample copy preview */}
+                <div className="p-4 bg-card-hover/50">
+                  <p className="text-xs font-bold mb-1 leading-snug" style={{ fontFamily: 'var(--font-heading)' }}>
+                    &ldquo;{v.sample.headline}&rdquo;
+                  </p>
+                  <p className="text-[11px] text-muted leading-relaxed">
+                    {v.sample.body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
+
+          <p className="text-center text-sm text-muted mt-8">
+            Each vibe changes the AI&apos;s writing style, vocabulary, and emotional register. You pick the mood. It writes the words.
+          </p>
         </div>
       </section>
 
@@ -606,6 +837,100 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ───── How the AI Actually Works ───── */}
+      <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Under the Hood</p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Not just &ldquo;AI-generated text&rdquo;
+            </h2>
+            <p className="text-lg text-muted max-w-2xl mx-auto">
+              Gridshot doesn&apos;t just slap generic copy on your photos. Here&apos;s what happens when you hit Generate.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                step: '01',
+                title: 'Reads your brand profile',
+                desc: 'Your colors, fonts, voice description, target audience, and brand personality are loaded as context for the AI.',
+              },
+              {
+                step: '02',
+                title: 'Analyzes your photos',
+                desc: 'The AI looks at your uploaded images to understand subject matter, mood, and visual tone.',
+              },
+              {
+                step: '03',
+                title: 'Applies your selected vibe',
+                desc: 'Each vibe has its own writing rules: vocabulary, sentence structure, emotional register, and pacing.',
+              },
+              {
+                step: '04',
+                title: 'Generates slide-by-slide copy',
+                desc: 'Every slide gets a unique headline and body text. The first slide hooks. The middle slides deliver. The last slide converts.',
+              },
+              {
+                step: '05',
+                title: 'You refine or publish',
+                desc: 'Edit any text, regenerate individual slides, adjust styling, or publish as-is. You always have final say.',
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                className="flex gap-6 items-start rounded-sm bg-card border border-border p-6 group hover:shadow-sm transition-all"
+              >
+                <span
+                  className="text-xs font-bold tracking-widest text-accent shrink-0 mt-1"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {item.step}
+                </span>
+                <div>
+                  <h3 className="text-base font-bold mb-1" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───── FAQ ───── */}
+      <section className="relative z-10 px-6 py-20 sm:py-28">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">FAQ</p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Common questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.q} className="rounded-sm border border-border bg-card p-6">
+                <h3 className="text-sm font-bold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                  {faq.q}
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ───── Final CTA ───── */}
       <section className="relative z-10 px-6 py-24 sm:py-32 border-t border-border">
         {/* Decorative focus rings */}
@@ -635,7 +960,7 @@ export default function HomePage() {
             <span aria-hidden="true">&rarr;</span>
           </Link>
           <p className="text-sm text-muted mt-4">
-            Free to start. No credit card needed.
+            Start your free trial today.
           </p>
         </div>
       </section>
