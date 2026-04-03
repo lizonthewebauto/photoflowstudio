@@ -168,7 +168,7 @@ export default function HomePage() {
               href="/signup"
               className="rounded-sm bg-accent-warm px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-warm-hover"
             >
-              Get Started Free
+              Get Started
             </Link>
           </div>
         </div>
@@ -213,12 +213,9 @@ export default function HomePage() {
               href="/signup"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-sm bg-accent-warm px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent-warm-hover shadow-lg shadow-accent-warm/20"
             >
-              Start Shooting
+              Get Started
               <span aria-hidden="true">&rarr;</span>
             </Link>
-            <span className="text-sm text-muted">
-              No credit card required
-            </span>
           </div>
 
           {/* Exposure triangle / camera info strip */}
@@ -634,9 +631,6 @@ export default function HomePage() {
             Start Shooting
             <span aria-hidden="true">&rarr;</span>
           </Link>
-          <p className="text-sm text-muted mt-4">
-            Free to start. No credit card needed.
-          </p>
         </div>
       </section>
 

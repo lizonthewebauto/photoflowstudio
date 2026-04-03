@@ -223,7 +223,7 @@ export function BrandForm({ mode, brand }: BrandFormProps) {
             type="button"
             onClick={handleExtract}
             disabled={extracting || !websiteUrl}
-            className="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded hover:bg-accent-hover transition-colors disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-accent-warm text-white rounded hover:bg-accent-warm-hover transition-colors disabled:opacity-50"
           >
             {extracting ? (
               <>
@@ -579,7 +579,7 @@ export function BrandForm({ mode, brand }: BrandFormProps) {
         <button
           type="submit"
           disabled={saving || !name}
-          className="flex items-center gap-2 px-6 py-3 bg-accent text-white rounded hover:bg-accent-hover transition-colors disabled:opacity-50"
+          className="flex items-center gap-2 px-6 py-3 bg-accent-warm text-white rounded hover:bg-accent-warm-hover transition-colors disabled:opacity-50"
         >
           {saving ? (
             <>

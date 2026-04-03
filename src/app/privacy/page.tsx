@@ -26,9 +26,9 @@ export default function PrivacyPage() {
             </Link>
             <Link
               href="/signup"
-              className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover"
+              className="rounded-md bg-accent-warm px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-warm-hover"
             >
-              Get Started Free
+              Get Started
             </Link>
           </div>
         </div>
@@ -130,13 +130,33 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                4. AI Processing
+                4. Legal Basis for Processing (EEA/UK Users)
               </h2>
               <p className="mb-3">
-                We use third-party AI services to generate text content based on your brand profile and selected parameters.
+                If you are located in the European Economic Area or United Kingdom, we process your
+                personal data under the following legal bases:
               </p>
               <ul className="list-disc pl-5 space-y-2">
-                <li>Your brand voice description, tone presets, and audience information are sent to AI providers to generate contextually appropriate copy.</li>
+                <li><strong>Contract Performance:</strong> Processing necessary to provide the Service to you, including account management, brand profile storage, content generation, and social media publishing.</li>
+                <li><strong>Legitimate Interest:</strong> Analytics and usage monitoring to improve the Service, security measures to protect against fraud and abuse.</li>
+                <li><strong>Consent:</strong> Marketing communications (where applicable). You may withdraw consent at any time.</li>
+                <li><strong>Legal Obligation:</strong> Processing required to comply with applicable laws, regulations, or legal proceedings.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2
+                className="text-lg font-bold mb-3"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                5. AI Processing
+              </h2>
+              <p className="mb-3">
+                We use Kie.ai (a third-party AI service powered by Google Gemini) to generate text content
+                based on your brand profile and selected parameters.
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Your brand voice description, tone presets, and audience information are sent to Kie.ai to generate contextually appropriate copy.</li>
                 <li>Photo content is not sent to AI services for text generation. AI copy is generated based on text parameters only.</li>
                 <li>We do not use your content to train AI models.</li>
               </ul>
@@ -147,7 +167,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                5. Data Sharing
+                6. Data Sharing
               </h2>
               <p className="mb-3">We share your data only in these circumstances:</p>
               <ul className="list-disc pl-5 space-y-2">
@@ -168,7 +188,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                6. Data Storage and Security
+                7. Data Storage and Security
               </h2>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Your data is stored on Supabase infrastructure with row-level security (RLS) policies ensuring data isolation between users.</li>
@@ -184,7 +204,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                7. Data Retention
+                8. Data Retention
               </h2>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Account data is retained for as long as your account is active.</li>
@@ -199,7 +219,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                8. Your Rights
+                9. Your Rights
               </h2>
               <p className="mb-3">Depending on your jurisdiction, you may have the right to:</p>
               <ul className="list-disc pl-5 space-y-2">
@@ -221,7 +241,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                9. Cookies
+                10. Cookies
               </h2>
               <p>
                 We use essential cookies for authentication and session management. These cookies are
@@ -235,7 +255,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                10. Children&apos;s Privacy
+                11. Children&apos;s Privacy
               </h2>
               <p>
                 The Service is not intended for children under 18 years of age. We do not knowingly
@@ -249,12 +269,14 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                11. International Data Transfers
+                12. International Data Transfers
               </h2>
               <p>
                 Your data may be processed and stored in the United States or other countries where
-                our infrastructure providers operate. By using the Service, you consent to the transfer
-                of your data to these locations.
+                our infrastructure providers operate. For transfers of personal data from the EEA, UK,
+                or Switzerland, we rely on Standard Contractual Clauses (SCCs) approved by the European
+                Commission and on our processors&apos; own transfer mechanisms (Supabase, Vercel, Stripe)
+                to ensure adequate data protection.
               </p>
             </section>
 
@@ -263,7 +285,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                12. Changes to This Policy
+                13. Changes to This Policy
               </h2>
               <p>
                 We may update this Privacy Policy from time to time. We will notify you of material
@@ -277,7 +299,7 @@ export default function PrivacyPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                13. Contact Us
+                14. Contact Us
               </h2>
               <p>
                 For privacy-related questions or requests, contact us at{' '}

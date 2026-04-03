@@ -26,9 +26,9 @@ export default function TermsPage() {
             </Link>
             <Link
               href="/signup"
-              className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover"
+              className="rounded-md bg-accent-warm px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-warm-hover"
             >
-              Get Started Free
+              Get Started
             </Link>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function TermsPage() {
                 1. Acceptance of Terms
               </h2>
               <p>
-                By accessing or using Gridshot (&quot;the Service&quot;), operated by Gridshot
+                By accessing or using Gridshot (&quot;the Service&quot;), operated by Gridshot LLC
                 (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), you agree to be bound by these Terms of Service.
                 If you do not agree to these terms, do not use the Service.
               </p>
@@ -120,7 +120,28 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                5. AI-Generated Content
+                5. Copyright and DMCA
+              </h2>
+              <p className="mb-3">
+                We respect intellectual property rights and expect our users to do the same. If you
+                believe that content hosted on our Service infringes your copyright, you may submit a
+                takedown notice to our designated agent:
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Send DMCA takedown notices to: <span className="font-medium">dmca@gridshot.app</span></li>
+                <li>Include: identification of the copyrighted work, the infringing material and its location on the Service, your contact information, and a statement under penalty of perjury that you are the rights holder or authorized to act on their behalf.</li>
+                <li>We will review valid notices and remove or disable access to infringing content promptly.</li>
+                <li>Users who receive a takedown notice may submit a counter-notice if they believe the removal was in error.</li>
+                <li>Repeat infringers may have their accounts terminated.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2
+                className="text-lg font-bold mb-3"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                6. AI-Generated Content
               </h2>
               <ul className="list-disc pl-5 space-y-2">
                 <li>
@@ -130,6 +151,7 @@ export default function TermsPage() {
                 <li>AI-generated content is provided as suggestions. You are responsible for reviewing
                   and approving all content before publishing.</li>
                 <li>We do not guarantee the accuracy, originality, or appropriateness of AI-generated content.</li>
+                <li>AI-generated text may not qualify for copyright protection under applicable law. We make no representations about the copyright status of AI-generated content.</li>
                 <li>You are solely responsible for any content you publish through the Service or export from it.</li>
               </ul>
             </section>
@@ -139,7 +161,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                6. Acceptable Use
+                7. Acceptable Use
               </h2>
               <p className="mb-3">You agree not to:</p>
               <ul className="list-disc pl-5 space-y-2">
@@ -158,13 +180,16 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                7. Third-Party Integrations
+                8. Third-Party Integrations
               </h2>
               <p>
                 The Service integrates with third-party platforms (Instagram, Threads, X, Facebook, TikTok,
                 Bluesky, LinkedIn, Pinterest) for social media publishing. Your use of these platforms is
                 subject to their respective terms of service and privacy policies. We are not responsible
-                for the availability, accuracy, or policies of third-party services.
+                for the availability, accuracy, or policies of third-party services. Social media platforms
+                may impose limits on automated publishing or suspend accounts that violate their automation
+                or content policies. We are not responsible for any platform account restrictions,
+                suspensions, or bans arising from your use of the publishing features.
               </p>
             </section>
 
@@ -173,14 +198,14 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                8. Subscription and Billing
+                9. Subscription and Billing
               </h2>
               <ul className="list-disc pl-5 space-y-2">
                 <li>The Service offers free and paid subscription tiers.</li>
                 <li>Paid subscriptions are billed in advance on a recurring basis (monthly or annually).</li>
                 <li>You may cancel your subscription at any time. Cancellation takes effect at the end of the current billing period.</li>
                 <li>We reserve the right to change pricing with 30 days notice to existing subscribers.</li>
-                <li>Refunds are handled on a case-by-case basis at our discretion.</li>
+                <li>Paid subscriptions are non-refundable except where required by applicable law. Cancellations take effect at the end of the current billing period and are not prorated.</li>
               </ul>
             </section>
 
@@ -189,7 +214,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                9. Intellectual Property
+                10. Intellectual Property
               </h2>
               <p>
                 The Service, including its design, features, code, and branding, is owned by Gridshot
@@ -203,7 +228,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                10. Limitation of Liability
+                11. Limitation of Liability
               </h2>
               <p>
                 To the maximum extent permitted by law, Gridshot shall not be liable for any
@@ -219,7 +244,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                11. Disclaimer of Warranties
+                12. Disclaimer of Warranties
               </h2>
               <p>
                 The Service is provided &quot;as is&quot; and &quot;as available&quot; without warranties
@@ -233,7 +258,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                12. Termination
+                13. Termination
               </h2>
               <p>
                 We may suspend or terminate your account at any time for violation of these Terms or for
@@ -248,7 +273,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                13. Changes to Terms
+                14. Changes to Terms
               </h2>
               <p>
                 We reserve the right to modify these Terms at any time. We will notify users of material
@@ -262,12 +287,13 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                14. Governing Law
+                15. Governing Law
               </h2>
               <p>
                 These Terms shall be governed by and construed in accordance with the laws of the
-                United States. Any disputes arising from these Terms shall be resolved in the courts
-                of competent jurisdiction.
+                State of New York, United States, without regard to conflict of law principles. Any
+                disputes arising from these Terms shall be resolved in the state or federal courts
+                located in New York County, New York.
               </p>
             </section>
 
@@ -276,7 +302,7 @@ export default function TermsPage() {
                 className="text-lg font-bold mb-3"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                15. Contact
+                16. Contact
               </h2>
               <p>
                 If you have questions about these Terms, please contact us at{' '}

@@ -23,7 +23,7 @@ export default async function BrandsPage() {
         </h1>
         <Link
           href="/brands/new"
-          className="px-4 py-2 bg-accent text-white rounded hover:bg-accent-hover transition-colors"
+          className="px-4 py-2 bg-accent-warm text-white rounded hover:bg-accent-warm-hover transition-colors"
         >
           Create Brand
         </Link>
@@ -34,7 +34,7 @@ export default async function BrandsPage() {
           <p className="text-muted mb-4">No brands yet. Create your first brand to get started.</p>
           <Link
             href="/brands/new"
-            className="inline-block px-4 py-2 bg-accent text-white rounded hover:bg-accent-hover transition-colors"
+            className="inline-block px-4 py-2 bg-accent-warm text-white rounded hover:bg-accent-warm-hover transition-colors"
           >
             Create Brand
           </Link>

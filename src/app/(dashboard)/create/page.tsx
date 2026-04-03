@@ -15,7 +15,7 @@ export default function CreatePage() {
         </p>
         <Link
           href="/brands"
-          className="inline-block px-4 py-2 bg-accent text-white rounded hover:bg-accent-hover transition-colors"
+          className="inline-block px-4 py-2 bg-accent-warm text-white rounded hover:bg-accent-warm-hover transition-colors"
         >
           Manage Brands
         </Link>
