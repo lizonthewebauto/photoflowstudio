@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 const PUBLIC_PATHS = ['/', '/login', '/signup', '/auth/callback', '/terms', '/privacy', '/fonts'];
+const STRIPE_WEBHOOK_PATH = '/api/stripe/webhook';
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
@@ -25,26 +26,44 @@ export async function middleware(request: NextRequest) {
     }
   );
 
+  const pathname = request.nextUrl.pathname;
+
+  // Let Stripe webhook through without auth
+  if (pathname === STRIPE_WEBHOOK_PATH) {
+    return supabaseResponse;
+  }
+
   const { data: { user } } = await supabase.auth.getUser();
 
-  const pathname = request.nextUrl.pathname;
   const isPublic = PUBLIC_PATHS.some((p) => pathname === p);
+  const isOnboarding = pathname.startsWith('/onboarding');
 
-  // Protect dashboard and API routes
-  if (!user && !isPublic) {
-    // API routes get a 401 JSON response
+  // Protect dashboard and API routes (allow onboarding + API through for logged-in users)
+  if (!user && !isPublic && !isOnboarding) {
     if (pathname.startsWith('/api/')) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    // Dashboard routes redirect to login
     const loginUrl = new URL('/login', request.url);
     loginUrl.searchParams.set('next', pathname);
     return NextResponse.redirect(loginUrl);
   }
 
-  // Redirect logged-in users away from auth pages
+  // Redirect logged-in users away from auth pages → onboarding
   if (user && (pathname === '/login' || pathname === '/signup')) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+    return NextResponse.redirect(new URL('/onboarding', request.url));
+  }
+
+  // Enforce onboarding completion for dashboard routes
+  if (user && !isPublic && !isOnboarding && !pathname.startsWith('/api/')) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('onboarding_completed')
+      .eq('id', user.id)
+      .single();
+
+    if (profile && !profile.onboarding_completed) {
+      return NextResponse.redirect(new URL('/onboarding', request.url));
+    }
   }
 
   return supabaseResponse;

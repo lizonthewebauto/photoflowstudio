@@ -128,9 +128,14 @@ create table if not exists public.templates (
   created_at timestamptz not null default now()
 );
 
--- Seed default template
+-- Seed templates
 insert into public.templates (slug, name, description, slide_count_default)
-values ('editorial-elegant', 'Editorial Elegant', 'Timeless editorial layout with elegant typography', 1)
+values
+  ('editorial-elegant', 'Editorial Elegant', 'Timeless editorial layout with elegant typography', 1),
+  ('bold-showcase', 'Bold Showcase', 'High-impact layout with large photo and bold uppercase text', 1),
+  ('minimal-centered', 'Minimal Centered', 'Clean centered design with circular photo crop', 1),
+  ('split-story', 'Split Story', 'Side-by-side photo and text for storytelling', 1),
+  ('cinematic-overlay', 'Cinematic Overlay', 'Full-bleed photo with dramatic gradient text overlay', 1)
 on conflict (slug) do nothing;
 
 -- ============================================================
