@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 
+const ALLOWED_TYPES = new Set([
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'image/gif',
+]);
+
+const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+
 export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -13,7 +22,27 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'No file provided' }, { status: 400 });
   }
 
-  const ext = file.name.split('.').pop() || 'jpg';
+  if (!ALLOWED_TYPES.has(file.type)) {
+    return NextResponse.json(
+      { error: 'Invalid file type. Allowed: JPEG, PNG, WebP, GIF' },
+      { status: 400 }
+    );
+  }
+
+  if (file.size > MAX_FILE_SIZE) {
+    return NextResponse.json(
+      { error: 'File too large. Maximum size is 20MB.' },
+      { status: 400 }
+    );
+  }
+
+  const SAFE_EXTENSIONS: Record<string, string> = {
+    'image/jpeg': 'jpg',
+    'image/png': 'png',
+    'image/webp': 'webp',
+    'image/gif': 'gif',
+  };
+  const ext = SAFE_EXTENSIONS[file.type] || 'jpg';
   const path = `${user.id}/${Date.now()}.${ext}`;
 
   const { data, error } = await supabase.storage
@@ -24,7 +53,8 @@ export async function POST(request: Request) {
     });
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error('Upload error:', error);
+    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
   }
 
   const { data: urlData } = supabase.storage

@@ -11,6 +11,9 @@ export async function GET() {
     .select('*')
     .eq('user_id', user.id);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('Connections fetch error:', error);
+    return NextResponse.json({ error: 'Failed to load connections' }, { status: 500 });
+  }
   return NextResponse.json(connections || []);
 }

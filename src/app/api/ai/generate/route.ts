@@ -52,9 +52,6 @@ Return ONLY valid JSON:
     return NextResponse.json(generated);
   } catch (err) {
     console.error('AI generation error:', err);
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : 'Generation failed' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Content generation failed. Please try again.' }, { status: 500 });
   }
 }

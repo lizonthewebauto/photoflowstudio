@@ -81,7 +81,10 @@ export async function PATCH(
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('Brand update error:', error);
+    return NextResponse.json({ error: 'Failed to update brand' }, { status: 500 });
+  }
   return NextResponse.json(brand);
 }
 
@@ -100,6 +103,9 @@ export async function DELETE(
     .eq('id', id)
     .eq('user_id', user.id);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('Brand delete error:', error);
+    return NextResponse.json({ error: 'Failed to delete brand' }, { status: 500 });
+  }
   return NextResponse.json({ success: true });
 }

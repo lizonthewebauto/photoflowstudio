@@ -13,7 +13,10 @@ export async function GET() {
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('Brands fetch error:', error);
+    return NextResponse.json({ error: 'Failed to load brands' }, { status: 500 });
+  }
   return NextResponse.json(brands);
 }
 
@@ -74,7 +77,10 @@ export async function POST(request: Request) {
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('Brand create error:', error);
+    return NextResponse.json({ error: 'Failed to create brand' }, { status: 500 });
+  }
 
   // Try to create Bundle Social team in background (non-blocking)
   if (process.env.BUNDLE_SOCIAL_API_KEY) {

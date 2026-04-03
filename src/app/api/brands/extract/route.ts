@@ -7,20 +7,29 @@ function isValidPublicUrl(urlString: string): boolean {
     const parsed = new URL(urlString);
     if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return false;
     const hostname = parsed.hostname.toLowerCase();
+    // Block IPv6 literals
+    if (hostname.startsWith('[') || hostname === '::1') return false;
     // Block private/internal networks
     if (
       hostname === 'localhost' ||
       hostname === '127.0.0.1' ||
       hostname === '0.0.0.0' ||
-      hostname.startsWith('10.') ||
-      hostname.startsWith('192.168.') ||
-      hostname.startsWith('172.') ||
       hostname.endsWith('.local') ||
       hostname.endsWith('.internal') ||
       hostname === 'metadata.google.internal' ||
       hostname === '169.254.169.254'
     ) {
       return false;
+    }
+    // Check numeric IP ranges
+    const parts = hostname.split('.').map(Number);
+    if (parts.length === 4 && parts.every((p) => !isNaN(p))) {
+      if (parts[0] === 10) return false; // 10.0.0.0/8
+      if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return false; // 172.16.0.0/12
+      if (parts[0] === 192 && parts[1] === 168) return false; // 192.168.0.0/16
+      if (parts[0] === 169 && parts[1] === 254) return false; // 169.254.0.0/16 link-local
+      if (parts[0] === 127) return false; // 127.0.0.0/8 loopback
+      if (parts[0] === 0) return false; // 0.0.0.0/8
     }
     return true;
   } catch {
@@ -49,6 +58,11 @@ export async function POST(request: Request) {
       signal: AbortSignal.timeout(15000),
       redirect: 'follow',
     });
+
+    // Validate final URL after redirects to prevent SSRF via open redirect
+    if (res.redirected && !isValidPublicUrl(res.url)) {
+      return NextResponse.json({ error: 'Please provide a valid public website URL' }, { status: 400 });
+    }
 
     if (!res.ok) {
       return NextResponse.json({ error: 'Could not fetch website' }, { status: 400 });
