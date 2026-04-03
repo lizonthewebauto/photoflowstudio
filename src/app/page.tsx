@@ -55,7 +55,7 @@ const faqs = [
   },
   {
     q: 'What platforms can I publish to?',
-    a: 'Instagram, Threads, X (Twitter), Facebook, TikTok, Bluesky, LinkedIn, and Pinterest. Connect your accounts once and publish to any or all of them directly from Gridshot.',
+    a: 'Instagram, Threads, X, Facebook, TikTok, Bluesky, LinkedIn, Pinterest, YouTube, Reddit, Google Business, Mastodon, Discord, and Slack. 14 platforms total. Connect your accounts once and publish to any or all of them directly from Gridshot.',
   },
   {
     q: 'Can I export carousels as images instead of publishing?',
@@ -80,6 +80,12 @@ const platforms = [
   'Bluesky',
   'LinkedIn',
   'Pinterest',
+  'YouTube',
+  'Reddit',
+  'Google Business',
+  'Mastodon',
+  'Discord',
+  'Slack',
 ];
 
 const buyerTypes = [
@@ -137,7 +143,7 @@ const features = [
   },
   {
     title: 'Post Everywhere',
-    desc: 'Connect your accounts and publish to Instagram, Threads, X, Facebook, TikTok, Bluesky, LinkedIn, and Pinterest.',
+    desc: 'Connect your accounts and publish to Instagram, Threads, X, Facebook, TikTok, Bluesky, LinkedIn, Pinterest, YouTube, Reddit, and more.',
     icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
   },
 ];
@@ -159,10 +165,10 @@ function Crosshair({ className = 'w-5 h-5' }: { className?: string }) {
 function ViewfinderBrackets({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`relative ${className}`}>
-      <div className="absolute -top-2 -left-3 w-5 h-5 border-t-2 border-l-2 border-accent" />
-      <div className="absolute -top-2 -right-3 w-5 h-5 border-t-2 border-r-2 border-accent" />
-      <div className="absolute -bottom-2 -left-3 w-5 h-5 border-b-2 border-l-2 border-accent" />
-      <div className="absolute -bottom-2 -right-3 w-5 h-5 border-b-2 border-r-2 border-accent" />
+      <div className="absolute -top-2 -left-3 w-5 h-5 border-t-2 border-l-2 border-accent-warm" />
+      <div className="absolute -top-2 -right-3 w-5 h-5 border-t-2 border-r-2 border-accent-warm" />
+      <div className="absolute -bottom-2 -left-3 w-5 h-5 border-b-2 border-l-2 border-accent-warm" />
+      <div className="absolute -bottom-2 -right-3 w-5 h-5 border-b-2 border-r-2 border-accent-warm" />
       {children}
     </div>
   );
@@ -170,7 +176,7 @@ function ViewfinderBrackets({ children, className = '' }: { children: React.Reac
 
 function Check() {
   return (
-    <svg className="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+    <svg className="w-4 h-4 text-accent-warm shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   );
@@ -178,7 +184,7 @@ function Check() {
 
 function FocusRing({ className = '' }: { className?: string }) {
   return (
-    <svg className={`text-accent/20 ${className}`} fill="none" viewBox="0 0 120 120" strokeWidth={1}>
+    <svg className={`text-accent-warm/15 ${className}`} fill="none" viewBox="0 0 120 120" strokeWidth={1}>
       <circle cx="60" cy="60" r="58" stroke="currentColor" />
       <circle cx="60" cy="60" r="40" stroke="currentColor" strokeDasharray="4 4" />
       <circle cx="60" cy="60" r="20" stroke="currentColor" />
@@ -264,7 +270,7 @@ export default function HomePage() {
           <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
             Smarter social content on autopilot. Gridshot turns your photos
             into branded carousels with AI-written copy and publishes to
-            Instagram, Threads, X, and 5 more platforms. Consistent marketing
+            Instagram, Threads, X, and 11 more platforms. Consistent marketing
             across every channel without the busywork.
           </p>
 
@@ -289,7 +295,7 @@ export default function HomePage() {
             <span className="w-1 h-1 rounded-full bg-accent/40" />
             <span>ISO 400</span>
             <span className="w-1 h-1 rounded-full bg-accent/40" />
-            <span>8 PLATFORMS</span>
+            <span>14 PLATFORMS</span>
           </div>
         </div>
       </section>
@@ -299,7 +305,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-muted">
           {[
             '8 creative vibes',
-            '8 platforms',
+            '14 platforms',
             '12+ premium fonts',
             'Unlimited brands',
             'JPEG export',
@@ -316,7 +322,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Workflow</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Workflow</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -345,7 +351,7 @@ export default function HomePage() {
               {
                 step: '03',
                 title: 'Post everywhere',
-                desc: 'Export as JPEGs or publish directly to Instagram, Threads, X, Facebook, TikTok, Bluesky, LinkedIn, and Pinterest.',
+                desc: 'Export as JPEGs or publish directly to Instagram, Threads, X, TikTok, LinkedIn, YouTube, and 8 more platforms.',
                 icon: 'M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z',
               },
             ].map((item) => (
@@ -354,13 +360,13 @@ export default function HomePage() {
                 className="relative rounded-sm bg-card border border-border p-8 transition-all hover:shadow-md group"
               >
                 {/* Viewfinder corner accents */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent/30 group-hover:border-accent transition-colors" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-accent/30 group-hover:border-accent transition-colors" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-accent/30 group-hover:border-accent transition-colors" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent/30 group-hover:border-accent transition-colors" />
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent-warm/30 group-hover:border-accent-warm transition-colors" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-accent-warm/30 group-hover:border-accent-warm transition-colors" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-accent-warm/30 group-hover:border-accent-warm transition-colors" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent-warm/30 group-hover:border-accent-warm transition-colors" />
 
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs font-bold tracking-widest uppercase text-accent">
+                  <span className="text-xs font-bold tracking-widest uppercase text-accent-warm">
                     {item.step}
                   </span>
                   <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -386,7 +392,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Samples</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Samples</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -465,7 +471,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">The Difference</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">The Difference</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -520,7 +526,7 @@ export default function HomePage() {
                   'AI writes headlines, body text, and CTAs instantly',
                   'Brand colors, fonts, and voice applied automatically',
                   'Tweak anything you want or publish as-is',
-                  'One click publishes to all 8 platforms at once',
+                  'One click publishes to all 14 platforms at once',
                   'Total time: 3-5 minutes per carousel',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm">
@@ -538,7 +544,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Features</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Features</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -556,7 +562,7 @@ export default function HomePage() {
                 key={f.title}
                 className="rounded-sm bg-card border border-border p-6 transition-all hover:shadow-md"
               >
-                <svg className="w-6 h-6 text-accent mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <svg className="w-6 h-6 text-accent-warm mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
                 </svg>
                 <h3
@@ -578,7 +584,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Tone</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Tone</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -636,7 +642,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">For You</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">For You</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -655,11 +661,11 @@ export default function HomePage() {
                 className="relative rounded-sm bg-card border border-border p-8 group"
               >
                 {/* Viewfinder corners */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent/30" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent/30" />
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent-warm/30" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent-warm/30" />
 
                 <h3
-                  className="text-xl font-bold text-accent mb-3"
+                  className="text-xl font-bold text-accent-warm mb-3"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {b.title}
@@ -679,22 +685,22 @@ export default function HomePage() {
       {/* ───── Platforms ───── */}
       <section className="relative z-10 px-6 py-20 sm:py-28">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Publish</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Publish</p>
           <h2
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            One carousel. Eight platforms.
+            One carousel. <span className="text-accent-warm">14 platforms.</span>
           </h2>
           <p className="text-lg text-muted mb-12">
-            Connect your accounts and publish directly from Gridshot.
+            Connect your accounts and publish directly from Gridshot. Every major social network, plus YouTube, Reddit, Discord, and more.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             {platforms.map((p) => (
               <span
                 key={p}
-                className="rounded-sm bg-card border border-border px-5 py-2.5 text-sm font-medium hover:border-accent/40 transition-colors"
+                className="rounded-sm bg-card border border-border px-5 py-2.5 text-sm font-medium hover:border-accent-warm/50 hover:text-accent-warm transition-colors"
               >
                 {p}
               </span>
@@ -708,7 +714,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Brand</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Brand</p>
               <h2
                 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6"
                 style={{ fontFamily: 'var(--font-heading)' }}
@@ -742,7 +748,7 @@ export default function HomePage() {
               <ViewfinderBrackets>
                 <div className="rounded-sm bg-card border border-border p-8 space-y-4">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-sm bg-accent flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 rounded-sm bg-accent-warm flex items-center justify-center text-white font-bold">
                       <Crosshair className="w-5 h-5" />
                     </div>
                     <div>
@@ -781,7 +787,7 @@ export default function HomePage() {
             <div className="relative rounded-sm bg-card border border-border overflow-hidden order-2 md:order-1">
               {/* Viewfinder header bar */}
               <div className="px-6 py-3 border-b border-border flex items-center gap-2 bg-card-hover">
-                <Crosshair className="w-3.5 h-3.5 text-accent" />
+                <Crosshair className="w-3.5 h-3.5 text-accent-warm" />
                 <span className="text-xs font-medium text-muted uppercase tracking-widest">Slide Editor</span>
               </div>
               <div className="p-6 space-y-3">
@@ -806,7 +812,7 @@ export default function HomePage() {
             </div>
 
             <div className="order-1 md:order-2">
-              <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Control</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Control</p>
               <h2
                 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6"
                 style={{ fontFamily: 'var(--font-heading)' }}
@@ -841,7 +847,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28 bg-card-hover">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">Under the Hood</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">Under the Hood</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -886,7 +892,7 @@ export default function HomePage() {
                 className="flex gap-6 items-start rounded-sm bg-card border border-border p-6 group hover:shadow-sm transition-all"
               >
                 <span
-                  className="text-xs font-bold tracking-widest text-accent shrink-0 mt-1"
+                  className="text-xs font-bold tracking-widest text-accent-warm shrink-0 mt-1"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {item.step}
@@ -907,7 +913,7 @@ export default function HomePage() {
       <section className="relative z-10 px-6 py-20 sm:py-28">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">FAQ</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent-warm font-medium mb-3">FAQ</p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
